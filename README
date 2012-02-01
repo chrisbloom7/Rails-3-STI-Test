@@ -1,0 +1,7 @@
+This is a Rails 3.0.11 app that demonstrates an STI pattern. Clone it to 
+a local directory, then:
+
+    $ bundle exec rake db:migrate
+    $ rails server
+    
+Then navigate to http://localhost:3000/kases

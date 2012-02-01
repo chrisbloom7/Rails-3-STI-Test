@@ -1,0 +1,43 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  customer_id: 1
+  open_date: 2012-01-30
+  close_date: 2012-01-30
+  referral_source: MyString
+  referral_type_id: 1
+  user_id: 1
+  funding_source_id: 1
+  disposition_id: 1
+  created_at: 2012-01-30 15:50:13
+  updated_at: 2012-01-30 15:50:13
+  lock_version: 1
+  created_by_id: 1
+  updated_by_id: 1
+  county: MyString
+  assessment_date: 2012-01-30 15:50:13
+  assessment_language: MyString
+  case_manager_id: 1
+  case_manager_notified_at: 2012-01-30 15:50:13
+  type: MyString
+
+two:
+  customer_id: 1
+  open_date: 2012-01-30
+  close_date: 2012-01-30
+  referral_source: MyString
+  referral_type_id: 1
+  user_id: 1
+  funding_source_id: 1
+  disposition_id: 1
+  created_at: 2012-01-30 15:50:13
+  updated_at: 2012-01-30 15:50:13
+  lock_version: 1
+  created_by_id: 1
+  updated_by_id: 1
+  county: MyString
+  assessment_date: 2012-01-30 15:50:13
+  assessment_language: MyString
+  case_manager_id: 1
+  case_manager_notified_at: 2012-01-30 15:50:13
+  type: MyString

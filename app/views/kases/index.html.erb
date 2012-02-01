@@ -1,0 +1,29 @@
+<h1>Listing kases</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Created at</th>
+    <th>Updated at</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @kases.each do |kase| %>
+  <tr>
+    <td><%= kase.name %></td>
+    <td><%= kase.type %></td>
+    <td><%= kase.created_at %></td>
+    <td><%= kase.updated_at %></td>
+    <td><%= link_to 'Show', kase %></td>
+    <td><%= link_to 'Edit', edit_kase_path(kase) %></td>
+    <td><%= link_to 'Destroy', kase, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Kase', new_kase_path %>

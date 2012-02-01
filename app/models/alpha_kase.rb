@@ -1,0 +1,1 @@
+class AlphaKase < Kase; end

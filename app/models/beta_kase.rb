@@ -1,0 +1,1 @@
+class BetaKase < Kase; end

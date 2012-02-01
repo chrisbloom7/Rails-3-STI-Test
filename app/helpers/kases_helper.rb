@@ -1,0 +1,2 @@
+module KasesHelper
+end
