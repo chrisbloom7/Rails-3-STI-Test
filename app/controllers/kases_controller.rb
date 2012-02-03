@@ -82,14 +82,26 @@ class KasesController < ApplicationController
   end
   
 private
-
+  
   def setup_sti_model
-    # This lets us set the "type" attribute from forms and querystrings
+    # Attempt to instantiate the correct Kase subclass based on the type 
+    # parameter sent from forms and querystrings
     model = nil
     if !params[:kase].blank? and !params[:kase][:type].blank?
-      model = params[:kase].delete(:type).constantize.to_s
+      # Type param found, let's see if it's a valid subclass
+      model = params[:kase].delete(:type)
+      begin
+        model = model.constantize if Kase.descendants.collect(&:original_model_name).include?(model)
+        @kase = model.new(params[:kase])
+      rescue NameError, NoMethodError => e
+        # Type param found, but an error prevented us from creating the object
+        # Fall through to create a generic Kase object
+      else
+        # No errors encountered, return having instantiated the proper subclass
+        return
+      end
     end
+    # If all else fails just instantiate a generic Kase object
     @kase = Kase.new(params[:kase])
-    @kase.type = model
   end
 end

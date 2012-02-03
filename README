@@ -5,3 +5,7 @@ a local directory, then:
     $ rails server
     
 Then navigate to (http://localhost:3000/kases)
+
+TODO
+
+* Add a test suite to test the basic issues we encountered and resolved
