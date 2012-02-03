@@ -1,5 +1,5 @@
 if Rails.env.development?
-  # Make sure we preload the parent and children class in development
+  # Pre-loaded our STI subclasses in development so Kase.descendants is properly populated
   %w[kase alpha_kase beta_kase].each do |c|
     require_dependency File.join("app","models","#{c}.rb")
   end
