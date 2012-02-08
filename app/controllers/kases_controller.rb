@@ -86,22 +86,34 @@ private
   def setup_sti_model
     # Attempt to instantiate the correct Kase subclass based on the type 
     # parameter sent from forms and querystrings
-    model = nil
+    # logger.debug "Attempting to detect implied Kase subclass"
     if !params[:kase].blank? and !params[:kase][:type].blank?
       # Type param found, let's see if it's a valid subclass
-      model = params[:kase].delete(:type)
+      type = params[:kase].delete(:type)
+      # logger.debug "Type param '#{type}' found. Looking for match in list of Kase.descendants:"
       begin
-        model = model.constantize if Kase.descendants.collect(&:original_model_name).include?(model)
+        # logger.debug "Attempting to constantize '#{type}' to a model class"
+        model = type.constantize
+        # logger.debug "Attempting to instantiate '#{type}' model class"
         @kase = model.new(params[:kase])
-      rescue NameError, NoMethodError => e
-        # Type param found, but an error prevented us from creating the object
-        # Fall through to create a generic Kase object
+        # logger.debug @kase.inspect
+      rescue => e
+        # Type param found, but an error prevented us from creating the 
+        # object. Fall through to create a generic Kase object
+        # logger.debug "Type param '#{type}' found, but an error prevented us from creating the object: #{e}"
       else
-        # No errors encountered, return having instantiated the proper subclass
+        # No errors encountered, return having instantiated the proper 
+        # subclass
+        # logger.debug "No errors encountered, returning"
         return
       end
+    else
+      # No type param was found, fall through to create a generic Kase object
+      # logger.debug "Type param not found"
     end
     # If all else fails just instantiate a generic Kase object
+    # logger.debug "Could not instantiate a subclass. Creating generic Kase object instead"
     @kase = Kase.new(params[:kase])
+    # logger.debug @kase.inspect
   end
 end
