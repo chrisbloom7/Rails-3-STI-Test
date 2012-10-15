@@ -87,7 +87,7 @@ private
     # Attempt to instantiate the correct Kase subclass based on the type 
     # parameter sent from forms and querystrings
     # logger.debug "Attempting to detect implied Kase subclass"
-    if !params[:kase].blank? and !params[:kase][:type].blank?
+    if params[:kase].present? and params[:kase][:type].present?
       # Type param found, let's see if it's a valid subclass
       type = params[:kase].delete(:type)
       # logger.debug "Type param '#{type}' found. Looking for match in list of Kase.descendants:"
